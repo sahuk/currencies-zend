@@ -1,6 +1,6 @@
 <?php
 
-namespace ExchangeRate\Model;
+namespace ExchangeRates\Model;
 
 class Currency
 {

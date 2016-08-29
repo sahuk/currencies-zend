@@ -37,4 +37,18 @@ class Module
 			],
 		];
 	}
+
+	public function getControllerConfig()
+	{
+		return [
+			'factories' => [
+				Controller\CurrencyController::class => function ($container) {
+					return new Controller\CurrencyController(
+						$container->get(Model\CurrencyTable::class)
+
+					);
+				}
+			]
+		];
+	}
 }

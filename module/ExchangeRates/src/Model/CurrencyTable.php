@@ -1,5 +1,5 @@
 <?php
-namespace ExchangeRate\Model;
+namespace ExchangeRates\Model;
 
 use RuntimeException;
 use Zend\Db\TableGateway\TableGatewayInterface;

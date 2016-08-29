@@ -4,20 +4,15 @@ namespace ExchangeRates;
 use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
-    'controllers' => [
-        'factories' => [
-            Controller\SkeletonController::class => InvokableFactory::class,
-        ],
-    ],
     'router' => [
         'routes' => [
-            'module-name-here' => [
+            'exchange-rates' => [
                 'type'    => 'Literal',
                 'options' => [
                     // Change this to something specific to your module
-                    'route'    => '/module-specific-root',
+                    'route'    => '/currencies',
                     'defaults' => [
-                        'controller'    => Controller\SkeletonController::class,
+                        'controller'    => Controller\CurrencyController::class,
                         'action'        => 'index',
                     ],
                 ],
