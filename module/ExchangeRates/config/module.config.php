@@ -2,6 +2,7 @@
 namespace ExchangeRates;
 
 use Zend\ServiceManager\Factory\InvokableFactory;
+use Zend\Router\Http\Segment;
 
 return [
     'router' => [
@@ -20,6 +21,18 @@ return [
                 'child_routes' => [
                     // You can place additional routes that match under the
                     // route defined above here.
+					'currency' => [
+						'type' => Segment::class,
+						'options' => [
+							'route' => '/:currencycode',
+							'defaults' => [
+								'action' => 'currency',
+							],
+							'constraints' => [
+								'currencycode' => '[A-Z]{3}',
+							],
+						],
+					],
                 ],
             ],
         ],

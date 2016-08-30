@@ -21,16 +21,17 @@ class CurrencyTable
 		});
 	}
 
-	public function getCurrency($code)
+	public function getCurrency($curcode)
 	{
-		$rowset = $this->tableGateway->select(['currency' => $code]);
+		$rowset = $this->tableGateway->select(['currency' => $curcode]);
 		$row = $rowset->current();
 		if (! $row) {
 			throw new RuntimeException(sprintf(
 				'Could not find currency with code %s',
-				$code
+				$curcode
 			));
 		}
+		return $row;
 	}
 }
 ?>

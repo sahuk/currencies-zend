@@ -27,4 +27,14 @@ class CurrencyController extends AbstractActionController
 			'currencies' => $this->table->fetchAll(),
 		]);
     }
+
+	public function currencyAction()
+	{
+		$currencycode = $this->params()->fromRoute('currencycode');
+		$currency = $this->table->getCurrency($currencycode);
+		return new ViewModel([
+			'currencycode' => $currencycode,
+			'name' => $currency->name,
+		]);
+	}
 }
