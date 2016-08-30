@@ -1,3 +1,26 @@
 <strong>Module:</strong>        ExchangeRates &raquo;
 <strong>Controller:</strong>    Currency &raquo;
 <strong>Action:</strong>        index
+
+<?php
+$title = 'Supported currencies';
+$this->headTitle($title);
+?>
+
+<table class="table">
+<tr>
+    <th>Currency code</th>
+    <th>Description</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($currencies as $currency) : ?>
+    <tr>
+        <td><?= $this->escapeHtml($currency->currencycode) ?></td>
+        <td><?= $this->escapeHtml($currency->name) ?></td>
+        <td>
+<?php
+?>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>

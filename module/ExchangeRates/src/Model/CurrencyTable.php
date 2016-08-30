@@ -3,6 +3,7 @@ namespace ExchangeRates\Model;
 
 use RuntimeException;
 use Zend\Db\TableGateway\TableGatewayInterface;
+use Zend\Db\Sql\Select;
 
 class CurrencyTable
 {
@@ -15,7 +16,9 @@ class CurrencyTable
 
 	public function fetchAll()
 	{
-		return $this->tableGateway->select();
+		return $this->tableGateway->select(function (Select $select) {
+			$select->order('currency ASC');
+		});
 	}
 
 	public function getCurrency($code)
