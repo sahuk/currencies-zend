@@ -11,6 +11,7 @@ use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
+use Zend\Db\Sql\Sql;
 
 class Module
 {
@@ -34,6 +35,10 @@ class Module
 					return new TableGateway(
 						'currency_codes', $dbAdapter, null, $resultSetPrototype);
 				},
+					Sql::class => function($container) {
+						$dbAdapter = $container->get(AdapterInterface::class);
+						return new Sql($dbAdapter);
+					}
 			],
 		];
 	}
@@ -44,8 +49,8 @@ class Module
 			'factories' => [
 				Controller\CurrencyController::class => function ($container) {
 					return new Controller\CurrencyController(
-						$container->get(Model\CurrencyTable::class)
-
+						$container->get(Model\CurrencyTable::class),
+						$container->get(Sql::class)
 					);
 				}
 			]
