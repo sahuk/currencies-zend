@@ -15,8 +15,16 @@ $this->headTitle($title);
 </tr>
 <?php foreach ($currencies as $currency) : ?>
     <tr>
-        <td><?= $this->escapeHtml($currency->currencycode) ?></td>
-        <td><?= $this->escapeHtml($currency->name) ?></td>
+		<td><a href="<?= $this->url(
+			'exchange-rates/currency',
+			['currencycode' => $currency->currencycode]
+		)?>"><?= $this->escapeHtml($currency->currencycode) ?></a>
+		</td>
+		<td><a href="<?= $this->url(
+			'exchange-rates/currency',
+			['currencycode' => $currency->currencycode]
+		)?>"><?= $this->escapeHtml($currency->name) ?></a>
+		</td>
         <td>
 <?php
 ?>
