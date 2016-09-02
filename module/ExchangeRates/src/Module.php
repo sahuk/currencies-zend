@@ -35,6 +35,10 @@ class Module
 					return new TableGateway(
 						'currency_codes', $dbAdapter, null, $resultSetPrototype);
 				},
+					Model\RateHistory::class => function($container) {
+						$sql = $container->get(Sql::class);
+						return new Model\RateHistory($sql);
+					},
 					Sql::class => function($container) {
 						$dbAdapter = $container->get(AdapterInterface::class);
 						return new Sql($dbAdapter);
@@ -50,7 +54,7 @@ class Module
 				Controller\CurrencyController::class => function ($container) {
 					return new Controller\CurrencyController(
 						$container->get(Model\CurrencyTable::class),
-						$container->get(Sql::class)
+						$container->get(Model\RateHistory::class)
 					);
 				}
 			]
