@@ -73,7 +73,7 @@ var chart = AmCharts.makeChart("chartdiv", {
     "export": {
         "enabled": true
     },
-    "dataProvider": dataProvider
+    "dataProvider": jsonData.chart 
 });
 
 var valaxis = chart.valueAxes[0];

@@ -37,7 +37,8 @@ class Module
 				},
 					Model\RateHistory::class => function($container) {
 						$sql = $container->get(Sql::class);
-						return new Model\RateHistory($sql);
+						$dbAdapter = $container->get(AdapterInterface::class);
+						return new Model\RateHistory($sql, $dbAdapter);
 					},
 					Sql::class => function($container) {
 						$dbAdapter = $container->get(AdapterInterface::class);

@@ -36,7 +36,7 @@ class CurrencyController extends AbstractActionController
 	{
 		$currencycode = $this->params()->fromRoute('currencycode');
 		$currency = $this->table->getCurrency($currencycode);
-		$metric = 'XAU';
+		$metric = 'EUR';
 		$history = $this->rh->getHistory($currencycode, $metric);
 		$chartdata = array();
 		foreach ($history as $entry) {
