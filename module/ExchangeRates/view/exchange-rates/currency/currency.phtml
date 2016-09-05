@@ -2,19 +2,29 @@
 <strong>Controller:</strong>    Currency &raquo;
 <strong>Action:</strong>        currency
 
-<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
-<script src="https://www.amcharts.com/lib/3/serial.js"></script>
-<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
-<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
-
 <?php
+$this->headScript()->appendFile("https://www.amcharts.com/lib/3/amcharts.js");
+$this->headScript()->appendFile("https://www.amcharts.com/lib/3/serial.js");
+$this->headScript()->appendFile("https://www.amcharts.com/lib/3/plugins/export/export.min.js");
+$this->headLink()->appendStylesheet("https://www.amcharts.com/lib/3/plugins/export/export.css", 'all');
+$this->headScript()->appendFile("https://www.amcharts.com/lib/3/themes/light.js");
+
 $description = "$name ($currencycode)";
 $this->headTitle($description);
 ?>
+
+<?php $this->headStyle()->captureStart() ?>
+#chartdiv {
+	width	: 100%;
+	height	: 500px;
+}
+<?php $this->headStyle()->captureEnd() ?>
+
 <h1><?=$description?></h1>
-<div id="chartdiv" style="width: 100%; height: 500px;"></div>
-<script>
+<div id="chartdiv"></div>
+<?php $this->inlineScript()->captureStart() ?>
 jsonData = <?= $jsondata ?>;
-</script>
-<script src="/js/chart.js"></script>
+<?php $this->inlineScript()->captureEnd() ?>
+<?php
+$this->inlineScript()->appendFile('/js/chart.js');
+?>

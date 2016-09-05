@@ -16,6 +16,7 @@
             ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
             ->prependStylesheet($this->basePath('css/bootstrap.min.css'))
         ?>
+		<?= $this->headStyle(); ?>
 
         <!-- Scripts -->
         <?= $this->headScript()
