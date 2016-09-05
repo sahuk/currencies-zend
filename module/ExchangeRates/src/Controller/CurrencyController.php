@@ -32,6 +32,12 @@ class CurrencyController extends AbstractActionController
 		]);
     }
 
+	public static function significantNumbers($x, $digits)
+	{
+		$multiplier = pow(10, $digits - floor(log($x)/log(10)) - 1);
+		return round($x * $multiplier) / $multiplier;
+	}
+
 	public function currencyAction()
 	{
 		$currencycode = $this->params()->fromRoute('currencycode');
@@ -42,7 +48,7 @@ class CurrencyController extends AbstractActionController
 		foreach ($history as $entry) {
 			array_push($chartdata, [
 				'date' => $entry->date->format('Y-m-d'),
-					'value' => $entry->rate
+					'value' => self::significantNumbers($entry->rate, 4)
 				]);
 		}
 		return new ViewModel([
