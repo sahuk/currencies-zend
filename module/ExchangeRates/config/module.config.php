@@ -11,7 +11,7 @@ return [
                 'type'    => 'Literal',
                 'options' => [
                     // Change this to something specific to your module
-                    'route'    => '/currencies',
+                    'route'    => '/',
                     'defaults' => [
                         'controller'    => Controller\CurrencyController::class,
                         'action'        => 'index',
@@ -24,7 +24,7 @@ return [
 					'currency' => [
 						'type' => Segment::class,
 						'options' => [
-							'route' => '/:currencycode',
+							'route' => ':currencycode',
 							'defaults' => [
 								'action' => 'currency',
 							],
